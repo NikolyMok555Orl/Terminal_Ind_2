@@ -1,5 +1,5 @@
 ﻿
-namespace TerminalSix
+namespace TerminalStore
 {
     partial class Form1
     {

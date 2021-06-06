@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalSix", "TerminalSix.csproj", "{A17849CC-D2C2-4232-8A09-7E49AE667DBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalСashier", "TerminalСashier.csproj", "{A17849CC-D2C2-4232-8A09-7E49AE667DBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
