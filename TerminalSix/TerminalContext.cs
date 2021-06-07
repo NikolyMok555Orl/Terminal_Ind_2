@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TerminalSix
+namespace TerminalStore
 {
     public class TerminalContext : DbContext
     {
@@ -14,10 +14,17 @@ namespace TerminalSix
         { }
 
 
+
+        static TerminalContext()
+        {
+            Database.SetInitializer<TerminalContext>(new TerminalContextInitializer());
+        }
+
+
         public DbSet<CassiraMap> CassiraMap { get; set; }
-        public DbSet<Discount> Discount { get; set; }
+        public DbSet<DiscountCard> Discount { get; set; }
         public DbSet<Product> Product { get; set; }
-        public DbSet<ProductAndDiscount> ProductAndDiscount { get; set; }
+       // public DbSet<ProductAndDiscount> ProductAndDiscount { get; set; }
         public DbSet<Purchase> Purchase { get; set; }
         public DbSet<ShoppingSession> ShoppingSession { get; set; }
 
