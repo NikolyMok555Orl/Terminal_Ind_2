@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalСashier", "TerminalСashier.csproj", "{A17849CC-D2C2-4232-8A09-7E49AE667DBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalBuyer", "..\TerminalBuyer\TerminalBuyer.csproj", "{A8A91929-6F78-4CEC-A31C-CEF0D5DEC4EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A17849CC-D2C2-4232-8A09-7E49AE667DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A17849CC-D2C2-4232-8A09-7E49AE667DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A17849CC-D2C2-4232-8A09-7E49AE667DBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8A91929-6F78-4CEC-A31C-CEF0D5DEC4EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8A91929-6F78-4CEC-A31C-CEF0D5DEC4EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8A91929-6F78-4CEC-A31C-CEF0D5DEC4EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8A91929-6F78-4CEC-A31C-CEF0D5DEC4EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

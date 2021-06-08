@@ -1,0 +1,10 @@
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\bin\Debug\TerminalBuyer.exe.config
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\bin\Debug\TerminalBuyer.exe
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\bin\Debug\TerminalBuyer.pdb
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\obj\Debug\TerminalBuyer.csprojAssemblyReference.cache
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\obj\Debug\TerminalBuyer.Properties.Resources.resources
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\obj\Debug\TerminalBuyer.csproj.GenerateResource.cache
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\obj\Debug\TerminalBuyer.csproj.CoreCompileInputs.cache
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\obj\Debug\TerminalBuyer.exe
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\obj\Debug\TerminalBuyer.pdb
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\obj\Debug\TerminalStore.BuyerForm.resources
