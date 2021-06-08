@@ -8,3 +8,11 @@ H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\obj\Debug\TerminalBuyer
 H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\obj\Debug\TerminalBuyer.exe
 H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\obj\Debug\TerminalBuyer.pdb
 H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\obj\Debug\TerminalStore.BuyerForm.resources
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\bin\Debug\EntityFramework.dll
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\bin\Debug\EntityFramework.SqlServer.dll
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\bin\Debug\TerminalStore.exe
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\bin\Debug\TerminalStore.pdb
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\bin\Debug\TerminalStore.exe.config
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\bin\Debug\EntityFramework.xml
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\bin\Debug\EntityFramework.SqlServer.xml
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalBuyer\obj\Debug\TerminalBuyer.csproj.CopyComplete

@@ -17,6 +17,8 @@ namespace TerminalStore
 
             context.Product.Add(product1);
             context.Product.Add(product2);
+            СashierMap cashierMap = new СashierMap("Татьяна", "1", "Татьяна");
+            context.СashierMap.Add(cashierMap);
             context.SaveChanges();
             //base.Seed(context);
         }

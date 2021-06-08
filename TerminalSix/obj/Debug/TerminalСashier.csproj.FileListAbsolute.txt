@@ -9,7 +9,9 @@ H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalSix\obj\Debug\TerminalСashie
 H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalSix\bin\Debug\TerminalStore.exe.config
 H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalSix\bin\Debug\TerminalStore.exe
 H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalSix\bin\Debug\TerminalStore.pdb
-H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalSix\obj\Debug\TerminalStore.Form1.resources
 H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalSix\obj\Debug\TerminalStore.Properties.Resources.resources
 H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalSix\obj\Debug\TerminalStore.exe
 H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalSix\obj\Debug\TerminalStore.pdb
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalSix\obj\Debug\TerminalStore.BuyerForm.resources
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalSix\obj\Debug\TerminalStore.FormCashier.resources
+H:\yniver\AIT\LessonAndWork\Terminal_Ind_2\TerminalSix\obj\Debug\TerminalStore.FormLogin.resources

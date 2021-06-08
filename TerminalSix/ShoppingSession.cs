@@ -17,7 +17,7 @@ namespace TerminalStore
         {
         }
 
-        public ShoppingSession(DiscountCard discountCard, List<Purchase> purchases, CassiraMap cassiraMap)
+        public ShoppingSession(DiscountCard discountCard, List<Purchase> purchases, СashierMap cassiraMap)
         {
             DiscountCard = discountCard;
             Purchases = purchases;
@@ -39,7 +39,7 @@ namespace TerminalStore
 
         [ForeignKey("CassiraMap")]
         public int CassiraMapId { get; set; }
-        public CassiraMap CassiraMap { get; set; }
+        public СashierMap CassiraMap { get; set; }
 
     }
 }

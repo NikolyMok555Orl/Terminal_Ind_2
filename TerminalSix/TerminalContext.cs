@@ -21,7 +21,7 @@ namespace TerminalStore
         }
 
 
-        public DbSet<CassiraMap> CassiraMap { get; set; }
+        public DbSet<СashierMap> СashierMap { get; set; }
         public DbSet<DiscountCard> Discount { get; set; }
         public DbSet<Product> Product { get; set; }
        // public DbSet<ProductAndDiscount> ProductAndDiscount { get; set; }
