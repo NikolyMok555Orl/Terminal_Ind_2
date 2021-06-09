@@ -194,7 +194,10 @@ namespace TerminalStore
         }
 
 
-
+        /// <summary>
+        /// Показ дисконтной карты
+        /// </summary>
+        /// <param name="idDiscount"></param>
         public void ShowDiscountCard(int idDiscount)
         {
             if (idDiscount > 0)
@@ -202,7 +205,9 @@ namespace TerminalStore
                 using (TerminalContext terminalContext = new TerminalContext())
                 {
                     DiscountCard discountCard = terminalContext.Discount.FirstOrDefault(d => d.DiscountCardId == idDiscount);
-                    if(discountCard != null)
+                    List<DiscountCard> discountCards = terminalContext.Discount.ToList();
+
+                    if (discountCard != null)
                     {
                         cashierController.PutDiscointCard(discountCard);
                     }

@@ -23,7 +23,9 @@ namespace TerminalStore
             context.СashierMap.Add(cashierMap);
 
             DiscountCard discountCardAll = new DiscountCard("На всё", true, 5);
-            DiscountCard discountCardBread = new DiscountCard("Хлебная", false, 10, new List<Product>() { product2 });
+
+            DiscountCard discountCardBread = new DiscountCard("Хлебная", false, 10);
+            discountCardBread.Product.Add(product2);
             context.Discount.Add(discountCardAll);
             context.Discount.Add(discountCardBread);
             context.SaveChanges();

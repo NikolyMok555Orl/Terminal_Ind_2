@@ -22,7 +22,7 @@ namespace TerminalStore
             IsAllProduct = isAllProduct;
             Size = size;
             ShoppingSessions = new List<ShoppingSession>();
-            //Product = new List<Product>();
+            Product = new List<Product>();
         }
 
 
