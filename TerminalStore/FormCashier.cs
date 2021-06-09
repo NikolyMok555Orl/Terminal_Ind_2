@@ -13,7 +13,7 @@ namespace TerminalStore
 {
     public partial class FormCashier : Form
     {
-        СashierContoller сashierContoller;
+        CashierController сashierContoller;
         public FormCashier()
         {
             InitializeComponent();
@@ -24,10 +24,12 @@ namespace TerminalStore
             try
             {
                 TerminalContext context = new TerminalContext();
-
+                panelCassier.Enabled = false;
+                buttonEndDay.Enabled = false;
+                buttonStart.Enabled = false;
                 // Запустить инициализацию базы данных в этой точке
                 context.Database.Initialize(false);
-                сashierContoller = new СashierContoller();
+                сashierContoller = new CashierController();
                 FormLogin formLogin = new FormLogin(сashierContoller);
                 formLogin.ShowDialog();
 
@@ -60,6 +62,21 @@ namespace TerminalStore
         private void buttonRead_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            if (сashierContoller.CanStart())
+            {
+                сashierContoller.StartCashbox();
+                panelCassier.Enabled = true;
+            }
+        }
+
+        private void buttonAdd5000_Click(object sender, EventArgs e)
+        {
+            сashierContoller.SetStartMoney();
+            buttonStart.Enabled = true;
         }
     }
 }

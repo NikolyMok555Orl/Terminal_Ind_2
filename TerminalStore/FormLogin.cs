@@ -12,8 +12,8 @@ namespace TerminalStore
 {
     public partial class FormLogin : Form
     {
-        СashierContoller сashierContoller;
-        public FormLogin(СashierContoller сashierContoller)
+        CashierController сashierContoller;
+        public FormLogin(CashierController сashierContoller)
         {
             //сashierContoller = new СashierContoller();
 

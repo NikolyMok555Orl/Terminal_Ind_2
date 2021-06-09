@@ -37,7 +37,7 @@ namespace TerminalStore
             this.labelProduct = new System.Windows.Forms.Label();
             this.comboBoxProduct = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelAtTheCheckout = new System.Windows.Forms.Panel();
             this.buttonGiveMoney = new System.Windows.Forms.Button();
             this.textBoxMoney = new System.Windows.Forms.TextBox();
             this.buttonShowDiscount = new System.Windows.Forms.Button();
@@ -48,7 +48,7 @@ namespace TerminalStore
             this.label2 = new System.Windows.Forms.Label();
             this.panelAddPurchase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchases)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.panelAtTheCheckout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchasesOnTape)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,20 +132,20 @@ namespace TerminalStore
             this.label1.TabIndex = 0;
             this.label1.Text = "Создать список покупок";
             // 
-            // panel2
+            // panelAtTheCheckout
             // 
-            this.panel2.Controls.Add(this.buttonGiveMoney);
-            this.panel2.Controls.Add(this.textBoxMoney);
-            this.panel2.Controls.Add(this.buttonShowDiscount);
-            this.panel2.Controls.Add(this.comboBoxDiscount);
-            this.panel2.Controls.Add(this.labelSum);
-            this.panel2.Controls.Add(this.textBoxReceipt);
-            this.panel2.Controls.Add(this.dataGridViewPurchasesOnTape);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(12, 177);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(775, 355);
-            this.panel2.TabIndex = 1;
+            this.panelAtTheCheckout.Controls.Add(this.buttonGiveMoney);
+            this.panelAtTheCheckout.Controls.Add(this.textBoxMoney);
+            this.panelAtTheCheckout.Controls.Add(this.buttonShowDiscount);
+            this.panelAtTheCheckout.Controls.Add(this.comboBoxDiscount);
+            this.panelAtTheCheckout.Controls.Add(this.labelSum);
+            this.panelAtTheCheckout.Controls.Add(this.textBoxReceipt);
+            this.panelAtTheCheckout.Controls.Add(this.dataGridViewPurchasesOnTape);
+            this.panelAtTheCheckout.Controls.Add(this.label2);
+            this.panelAtTheCheckout.Location = new System.Drawing.Point(12, 177);
+            this.panelAtTheCheckout.Name = "panelAtTheCheckout";
+            this.panelAtTheCheckout.Size = new System.Drawing.Size(775, 355);
+            this.panelAtTheCheckout.TabIndex = 1;
             // 
             // buttonGiveMoney
             // 
@@ -220,16 +220,16 @@ namespace TerminalStore
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 533);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panelAtTheCheckout);
             this.Controls.Add(this.panelAddPurchase);
             this.Name = "BuyerForm";
-            this.Text = "Form1";
+            this.Text = "Покупатель";
             this.Load += new System.EventHandler(this.BuyerForm_Load);
             this.panelAddPurchase.ResumeLayout(false);
             this.panelAddPurchase.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchases)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelAtTheCheckout.ResumeLayout(false);
+            this.panelAtTheCheckout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchasesOnTape)).EndInit();
             this.ResumeLayout(false);
 
@@ -239,7 +239,7 @@ namespace TerminalStore
 
         private System.Windows.Forms.Panel panelAddPurchase;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelAtTheCheckout;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonToCassira;
         private System.Windows.Forms.Button buttonDeleteLast;

@@ -15,10 +15,11 @@ namespace TerminalStore
     {
         //TerminalStore.TerminalContext terminalContext;
         BuyerController buyerController;
-        public BuyerForm()
+        public BuyerForm(BuyerController buyerController)
         {
             InitializeComponent();
-            buyerController = new BuyerController();
+            this.buyerController=buyerController;
+            
             buyerController.SetProduct(ref comboBoxProduct);
 
         }

@@ -11,7 +11,13 @@ namespace TerminalStore
     public class BuyerController
     {
         List<Product> productsInBasket;
+        CashierController cashierController;
 
+        public BuyerController(CashierController cashierController)
+        {
+            this.cashierController = cashierController;
+            productsInBasket = new List<Product>();
+        }
 
         public void SetProduct(ref ComboBox comboBoxAllProduct)
         {

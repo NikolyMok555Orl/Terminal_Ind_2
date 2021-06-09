@@ -51,6 +51,7 @@ namespace TerminalStore
             this.textBoxPass.Name = "textBoxPass";
             this.textBoxPass.Size = new System.Drawing.Size(134, 20);
             this.textBoxPass.TabIndex = 1;
+            this.textBoxPass.Text = "1";
             // 
             // label1
             // 

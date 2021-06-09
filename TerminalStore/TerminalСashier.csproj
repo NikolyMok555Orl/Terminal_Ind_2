@@ -86,7 +86,7 @@
     <Compile Include="ShoppingSession.cs" />
     <Compile Include="TerminalContext.cs" />
     <Compile Include="TerminalContextInitializer.cs" />
-    <Compile Include="СashierContoller.cs" />
+    <Compile Include="CashierController.cs" />
     <EmbeddedResource Include="BuyerForm.resx">
       <DependentUpon>BuyerForm.cs</DependentUpon>
     </EmbeddedResource>
