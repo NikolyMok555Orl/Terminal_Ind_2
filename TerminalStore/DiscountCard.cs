@@ -14,6 +14,8 @@ namespace TerminalStore
     {
         public DiscountCard()
         {
+            //DiscountCardProducts = new List<DiscountCardProduct>();
+            Products = new List<Product>();
         }
 
         public DiscountCard(string name, bool isAllProduct, int size)
@@ -22,14 +24,18 @@ namespace TerminalStore
             IsAllProduct = isAllProduct;
             Size = size;
             ShoppingSessions = new List<ShoppingSession>();
-            Product = new List<Product>();
+            //DiscountCardProducts = new List<DiscountCardProduct>();
+            Products = new List<Product>();
         }
 
-
-        public DiscountCard(string name, bool isAllProduct, int size, List<Product> products) :this(name, isAllProduct, size)
+        //List<DiscountCardProduct> products
+        public DiscountCard(string name, bool isAllProduct, int size, List<Product> products) 
         {
-
-            Product = products;
+            Name = name;
+            IsAllProduct = isAllProduct;
+            Size = size;
+            //DiscountCardProducts = products;
+            Products = products;
 
         }
 
@@ -44,13 +50,15 @@ namespace TerminalStore
 
         public List<ShoppingSession> ShoppingSessions { get; set; }
 
-        public List<Product> Product { get; set; }
+
+        //public List<DiscountCardProduct> DiscountCardProducts { get; set; }
+        public List<Product> Products { get; set; }
 
 
 
         public double GetSizeDiscountOnProduct(Product product)
         {
-            double sizeDiscount = 1;
+            double sizeDiscount = 0;
             if (this.IsAllProduct)
             {
                 return this.Size / 100.0;
@@ -59,14 +67,14 @@ namespace TerminalStore
             else
             {
 
-                using (TerminalContext terminalContext=new TerminalContext())
+                /*using (TerminalContext terminalContext=new TerminalContext())
                 {
+                   
 
 
 
-
-                }
-                    if (Product.Contains(product)) return this.Size / 100.0;
+                }*/
+                if (Products.Contains(product)) return this.Size / 100.0;
             }
 
             return sizeDiscount;

@@ -204,8 +204,12 @@ namespace TerminalStore
             {
                 using (TerminalContext terminalContext = new TerminalContext())
                 {
-                    DiscountCard discountCard = terminalContext.Discount.FirstOrDefault(d => d.DiscountCardId == idDiscount);
-                    List<DiscountCard> discountCards = terminalContext.Discount.ToList();
+                    //DiscountCard discountCard = terminalContext.Discount.FirstOrDefault(d => d.DiscountCardId == idDiscount);
+
+                    DiscountCard discountCard = terminalContext.Discount.Include(d => d.Products).FirstOrDefault(d => d.DiscountCardId == idDiscount); 
+
+                    //List<DiscountCard> discountCard = terminalContext.Discount.Include(p=>p.Products).ToList();
+                   // List<DiscountCard> discountCards = terminalContext.Discount.ToList();
 
                     if (discountCard != null)
                     {

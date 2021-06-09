@@ -18,10 +18,14 @@ namespace TerminalStore
             Name = name;
             IsWight = isWight;
             if (price > 0) Price = price;
+            // DiscountCardProducts = new List<DiscountCardProduct>();
+            DiscountCards = new List<DiscountCard>();
         }
 
         public Product()
         {
+            // DiscountCardProducts = new List<DiscountCardProduct>();
+            DiscountCards = new List<DiscountCard>();
         }
 
         [Key]
@@ -36,9 +40,10 @@ namespace TerminalStore
         [Required]
         public int Price { get; set; }
 
-        
-        public List<DiscountCard> DiscountCards { get; set; }
 
+
+        //public virtual List<DiscountCardProduct> DiscountCardProducts { get; set; }
+        public List<DiscountCard> DiscountCards{ get; set; }
         [NotMapped]
         public string IsWightStr
         {

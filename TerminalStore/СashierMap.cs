@@ -35,6 +35,7 @@ namespace TerminalStore
 
         public СashierMap()
         {
+            ShoppingSessions = new List<ShoppingSession>();
         }
     }
 }

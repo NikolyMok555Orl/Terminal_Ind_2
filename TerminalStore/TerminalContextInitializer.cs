@@ -19,16 +19,28 @@ namespace TerminalStore
             context.Product.Add(product1);
             context.Product.Add(product2);
             context.Product.Add(product3);
+            context.SaveChanges();
             СashierMap cashierMap = new СashierMap("Татьяна", "1", "Татьяна");
             context.СashierMap.Add(cashierMap);
+            //context.SaveChanges();
 
             DiscountCard discountCardAll = new DiscountCard("На всё", true, 5);
 
             DiscountCard discountCardBread = new DiscountCard("Хлебная", false, 10);
-            discountCardBread.Product.Add(product2);
+            //product2.DiscountCards.Add(discountCardBread);
+            discountCardBread.Products.Add(product2);
             context.Discount.Add(discountCardAll);
             context.Discount.Add(discountCardBread);
+            
             context.SaveChanges();
+
+
+
+           /* using (TerminalContext terminalContext = new TerminalContext())
+            {
+                terminalContext.Discount.Load();
+                List<DiscountCard> discountCard = terminalContext.Discount.Include(p=>p.Products).ToList();
+            }*/
             //base.Seed(context);
         }
     }

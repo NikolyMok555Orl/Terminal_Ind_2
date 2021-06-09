@@ -28,5 +28,9 @@ namespace TerminalStore
         public DbSet<Purchase> Purchase { get; set; }
         public DbSet<ShoppingSession> ShoppingSession { get; set; }
 
+       // public DbSet<DiscountCardProduct> DiscountCardProduct { get; set; }
+
+
+
     }
 }

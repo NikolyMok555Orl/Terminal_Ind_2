@@ -31,7 +31,7 @@ namespace TerminalStore
                     purchaseStr[0] = product.Name;
                     purchaseStr[1] = string.Format("{0} {1}", purchase.SizeAndCount, product.IsWightStr);
 
-                    double sizeDiscount = 1;
+                    double sizeDiscount = 0;
                     if (shoppingSession.DiscountCard != null)
                     {
                         sizeDiscount = shoppingSession.DiscountCard.GetSizeDiscountOnProduct(product);

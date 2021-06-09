@@ -327,7 +327,8 @@ namespace TerminalStore
             if(discountCard != null)
             {
                 shoppingSession.DiscountCard = discountCard;
-               
+                SetDateGrid.SetReceipt(dataGridProduct, shoppingSession);
+
             }
             else
             {
