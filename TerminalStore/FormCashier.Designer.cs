@@ -30,6 +30,7 @@ namespace TerminalStore
         private void InitializeComponent()
         {
             this.panelCassier = new System.Windows.Forms.Panel();
+            this.buttonSayFinalSum = new System.Windows.Forms.Button();
             this.labelThisProduct = new System.Windows.Forms.Label();
             this.buttonDeleteLast = new System.Windows.Forms.Button();
             this.buttonWriteDiscount = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@ namespace TerminalStore
             this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
             this.buttonEndDay = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
+            this.labelSum = new System.Windows.Forms.Label();
             this.panelCassier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchase)).BeginInit();
             this.panelWorkMoney.SuspendLayout();
@@ -55,6 +57,8 @@ namespace TerminalStore
             // 
             // panelCassier
             // 
+            this.panelCassier.Controls.Add(this.labelSum);
+            this.panelCassier.Controls.Add(this.buttonSayFinalSum);
             this.panelCassier.Controls.Add(this.labelThisProduct);
             this.panelCassier.Controls.Add(this.buttonDeleteLast);
             this.panelCassier.Controls.Add(this.buttonWriteDiscount);
@@ -70,6 +74,16 @@ namespace TerminalStore
             this.panelCassier.Name = "panelCassier";
             this.panelCassier.Size = new System.Drawing.Size(824, 321);
             this.panelCassier.TabIndex = 0;
+            // 
+            // buttonSayFinalSum
+            // 
+            this.buttonSayFinalSum.Location = new System.Drawing.Point(313, 272);
+            this.buttonSayFinalSum.Name = "buttonSayFinalSum";
+            this.buttonSayFinalSum.Size = new System.Drawing.Size(258, 46);
+            this.buttonSayFinalSum.TabIndex = 11;
+            this.buttonSayFinalSum.Text = "Назвать сумму к оплате";
+            this.buttonSayFinalSum.UseVisualStyleBackColor = true;
+            this.buttonSayFinalSum.Click += new System.EventHandler(this.buttonSayFinalSum_Click);
             // 
             // labelThisProduct
             // 
@@ -88,6 +102,7 @@ namespace TerminalStore
             this.buttonDeleteLast.TabIndex = 9;
             this.buttonDeleteLast.Text = "Удалить позицию в чек";
             this.buttonDeleteLast.UseVisualStyleBackColor = true;
+            this.buttonDeleteLast.Click += new System.EventHandler(this.buttonDeleteLast_Click);
             // 
             // buttonWriteDiscount
             // 
@@ -97,6 +112,7 @@ namespace TerminalStore
             this.buttonWriteDiscount.TabIndex = 8;
             this.buttonWriteDiscount.Text = "Считать карту";
             this.buttonWriteDiscount.UseVisualStyleBackColor = true;
+            this.buttonWriteDiscount.Click += new System.EventHandler(this.buttonWriteDiscount_Click);
             // 
             // labelDiscountCard
             // 
@@ -109,12 +125,13 @@ namespace TerminalStore
             // 
             // buttonTotal
             // 
-            this.buttonTotal.Location = new System.Drawing.Point(577, 242);
+            this.buttonTotal.Location = new System.Drawing.Point(577, 268);
             this.buttonTotal.Name = "buttonTotal";
-            this.buttonTotal.Size = new System.Drawing.Size(244, 76);
+            this.buttonTotal.Size = new System.Drawing.Size(244, 50);
             this.buttonTotal.TabIndex = 6;
-            this.buttonTotal.Text = "Итог";
+            this.buttonTotal.Text = "Итог. Дать сдачи:). Отдать чек ";
             this.buttonTotal.UseVisualStyleBackColor = true;
+            this.buttonTotal.Click += new System.EventHandler(this.buttonTotal_Click);
             // 
             // labelFirstPurchase
             // 
@@ -133,18 +150,20 @@ namespace TerminalStore
             this.buttonWriteCountAndWight.TabIndex = 4;
             this.buttonWriteCountAndWight.Text = "Ввести";
             this.buttonWriteCountAndWight.UseVisualStyleBackColor = true;
+            this.buttonWriteCountAndWight.Click += new System.EventHandler(this.buttonWriteCountAndWight_Click);
             // 
             // textBoxCountAndWight
             // 
-            this.textBoxCountAndWight.Location = new System.Drawing.Point(95, 271);
+            this.textBoxCountAndWight.Location = new System.Drawing.Point(98, 268);
             this.textBoxCountAndWight.Name = "textBoxCountAndWight";
             this.textBoxCountAndWight.Size = new System.Drawing.Size(100, 20);
             this.textBoxCountAndWight.TabIndex = 3;
+            this.textBoxCountAndWight.Text = "0";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 271);
+            this.label1.Location = new System.Drawing.Point(6, 271);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 2;
@@ -195,6 +214,7 @@ namespace TerminalStore
             this.buttonHandOverMoney.TabIndex = 1;
             this.buttonHandOverMoney.Text = "Сдать кассу";
             this.buttonHandOverMoney.UseVisualStyleBackColor = true;
+            this.buttonHandOverMoney.Click += new System.EventHandler(this.buttonHandOverMoney_Click);
             // 
             // buttonAdd5000
             // 
@@ -222,6 +242,7 @@ namespace TerminalStore
             this.buttonEndDay.TabIndex = 3;
             this.buttonEndDay.Text = "Закончить день. Отправить данные на сервак";
             this.buttonEndDay.UseVisualStyleBackColor = true;
+            this.buttonEndDay.Click += new System.EventHandler(this.buttonEndDay_Click);
             // 
             // buttonStart
             // 
@@ -232,6 +253,15 @@ namespace TerminalStore
             this.buttonStart.Text = "Открыть кассу";
             this.buttonStart.UseVisualStyleBackColor = true;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
+            // 
+            // labelSum
+            // 
+            this.labelSum.AutoSize = true;
+            this.labelSum.Location = new System.Drawing.Point(578, 249);
+            this.labelSum.Name = "labelSum";
+            this.labelSum.Size = new System.Drawing.Size(106, 13);
+            this.labelSum.TabIndex = 12;
+            this.labelSum.Text = "Деньги покупателя";
             // 
             // FormCashier
             // 
@@ -275,6 +305,8 @@ namespace TerminalStore
         private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Label labelThisProduct;
+        private System.Windows.Forms.Button buttonSayFinalSum;
+        private System.Windows.Forms.Label labelSum;
     }
 }
 

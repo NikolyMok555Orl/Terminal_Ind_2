@@ -21,8 +21,11 @@ namespace TerminalStore
             this.buyerController=buyerController;
             
             buyerController.SetProduct(ref comboBoxProduct);
+            buyerController.SetDiscount(ref comboBoxDiscount);
+            comboBoxDiscount.SelectedIndex = -1;
             panelAtTheCheckout.Enabled = false;
-
+            buyerController.LabelSumFinal = labelSumFinal;
+            buyerController.TextBoxReceipt = textBoxReceipt;
         }
 
         private void BuyerForm_Load(object sender, EventArgs e)
@@ -45,7 +48,10 @@ namespace TerminalStore
             if (buyerController.GoToCheckout())
             {
                 panelAtTheCheckout.Enabled = true;
+                //buttonGiveMoney.Enabled = false;
                 buyerController.DataGridMonitor = dataGridViewPurchasesOnTape;
+                panelAddPurchase.Enabled = false;
+                dataGridViewPurchasesOnTape.Rows.Clear();
             }
             else
             {
@@ -53,6 +59,38 @@ namespace TerminalStore
             }
            
 
+        }
+
+        private void buttonTakePurchases_Click(object sender, EventArgs e)
+        {
+            panelAddPurchase.Enabled = true;
+            panelAtTheCheckout.Enabled = false;
+            dataGridViewPurchases.Rows.Clear();
+            dataGridViewPurchasesOnTape.Rows.Clear();
+            textBoxReceipt.Text = "";
+        }
+
+        /// <summary>
+        /// Дать денег
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonGiveMoney_Click(object sender, EventArgs e)
+        {
+            if (textBoxMoney.TextLength > 0)
+            {
+                buyerController.Pay(Convert.ToInt32(textBoxMoney.Text));
+            }
+        }
+
+        private void buttonDeleteLastBuyer_Click(object sender, EventArgs e)
+        {
+            buyerController.DeleteLastProduct();
+        }
+
+        private void buttonShowDiscount_Click(object sender, EventArgs e)
+        {
+            buyerController.ShowDiscountCard(Convert.ToInt32(comboBoxDiscount.SelectedValue));
         }
     }
 }

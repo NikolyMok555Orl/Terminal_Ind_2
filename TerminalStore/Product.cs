@@ -30,7 +30,9 @@ namespace TerminalStore
         public string Name { get; set; }
         [Required]
         public bool IsWight { get; set; }
-
+        /// <summary>
+        /// Цена за 1 штуку, или за 1 кг
+        /// </summary>
         [Required]
         public int Price { get; set; }
 
@@ -61,7 +63,7 @@ namespace TerminalStore
 
         public override string ToString()
         {
-            return string.Format("{0} {1} руб за {2}" , Name, Price, (IsWight?"кг":"шт"));
+            return string.Format("{0} {1} руб за {2}" , Name, Price, (IsWight?"г":"шт"));
         }
 
         public override bool Equals(object obj)

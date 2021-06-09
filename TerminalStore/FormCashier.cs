@@ -13,7 +13,7 @@ namespace TerminalStore
 {
     public partial class FormCashier : Form
     {
-        CashierController сashierContoller;
+        CashierController cashierController;
         public FormCashier()
         {
             InitializeComponent();
@@ -27,10 +27,11 @@ namespace TerminalStore
                 panelCassier.Enabled = false;
                 buttonEndDay.Enabled = false;
                 buttonStart.Enabled = false;
+               
                 // Запустить инициализацию базы данных в этой точке
                 context.Database.Initialize(false);
-                сashierContoller = new CashierController(labelFirstPurchase);
-                FormLogin formLogin = new FormLogin(сashierContoller);
+                cashierController = new CashierController(labelFirstPurchase, labelThisProduct, labelSum, dataGridViewPurchase, labelDiscountCard);
+                FormLogin formLogin = new FormLogin(cashierController);
                 formLogin.ShowDialog();
 
                 if (formLogin.DialogResult == DialogResult.OK)
@@ -61,25 +62,73 @@ namespace TerminalStore
 
         private void buttonRead_Click(object sender, EventArgs e)
         {
-
+            cashierController.ReadProduct();
+            buttonSayFinalSum.Enabled = true;
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            if (сashierContoller.CanStart())
+            if (cashierController.CanStart())
             {
-                сashierContoller.StartCashbox();
+                cashierController.StartCashbox();
                 panelCassier.Enabled = true;
+                buttonTotal.Enabled = false;
+                buttonSayFinalSum.Enabled = false;
             }
         }
 
         private void buttonAdd5000_Click(object sender, EventArgs e)
         {
-            сashierContoller.SetStartMoney();
+            cashierController.SetStartMoney();
             buttonStart.Enabled = true;
         }
 
+        private void buttonWriteCountAndWight_Click(object sender, EventArgs e)
+        {
+            cashierController.SetCountWight(Convert.ToInt32(textBoxCountAndWight.Text), dataGridViewPurchase);
+        }
 
-        
+        private void buttonSayFinalSum_Click(object sender, EventArgs e)
+        {
+            if(cashierController.SayFinalSum()) buttonTotal.Enabled = true;
+        }
+
+        private void buttonTotal_Click(object sender, EventArgs e)
+        {
+            if (cashierController.PurchasePaid())
+            {
+                cashierController.GiveCheckAndChange();
+                dataGridViewPurchase.Rows.Clear();
+                buttonEndDay.Enabled = true;
+                labelSum.Text = "";
+                labelThisProduct.Text = "";
+                if (cashierController.ExcessMoney) MessageBox.Show("Сдайте деньги");
+            }
+        }
+
+        private void buttonHandOverMoney_Click(object sender, EventArgs e)
+        {
+            cashierController.HandOverMoney();
+            
+        }
+
+        private void buttonEndDay_Click(object sender, EventArgs e)
+        {
+            if (cashierController.EndTheDay())
+            {
+                panelCassier.Enabled = false;
+
+            }
+        }
+
+        private void buttonDeleteLast_Click(object sender, EventArgs e)
+        {
+            cashierController.DeleteLastProduct();
+        }
+
+        private void buttonWriteDiscount_Click(object sender, EventArgs e)
+        {
+            cashierController.TakeDiscointCard();
+        }
     }
 }

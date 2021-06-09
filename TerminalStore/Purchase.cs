@@ -17,11 +17,12 @@ namespace TerminalStore
         {
         }
 
-        public Purchase( int productId, int sizeAndCount, int shoppingSessionId)
+        public Purchase( Product product, int sizeAndCount, ShoppingSession shoppingSession)
         {
-            ProductId = productId;
+            Product = product;
+            ProductId = product.ProductId;
             SizeAndCount = sizeAndCount;
-            ShoppingSessionId = shoppingSessionId;
+            ShoppingSession = shoppingSession;
             //ShoppingSession = shoppingSession;
         }
 
@@ -31,6 +32,7 @@ namespace TerminalStore
        // public int ShopingSessinId { get; set; }
    
         public int ProductId { get; set; }
+        public Product Product { get; set; }
 
         /// <summary>
         /// Вес в граммах/количества
@@ -41,5 +43,8 @@ namespace TerminalStore
         public int ShoppingSessionId { get; set; }
         public ShoppingSession ShoppingSession { get; set; }
 
+
+
+        
     }
 }

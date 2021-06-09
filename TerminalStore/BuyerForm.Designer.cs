@@ -42,10 +42,13 @@ namespace TerminalStore
             this.textBoxMoney = new System.Windows.Forms.TextBox();
             this.buttonShowDiscount = new System.Windows.Forms.Button();
             this.comboBoxDiscount = new System.Windows.Forms.ComboBox();
-            this.labelSum = new System.Windows.Forms.Label();
+            this.labelSumFinal = new System.Windows.Forms.Label();
             this.textBoxReceipt = new System.Windows.Forms.TextBox();
             this.dataGridViewPurchasesOnTape = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonTakePurchases = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.buttonDeleteLastBuyer = new System.Windows.Forms.Button();
             this.panelAddPurchase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchases)).BeginInit();
             this.panelAtTheCheckout.SuspendLayout();
@@ -135,68 +138,74 @@ namespace TerminalStore
             // 
             // panelAtTheCheckout
             // 
+            this.panelAtTheCheckout.Controls.Add(this.buttonDeleteLastBuyer);
+            this.panelAtTheCheckout.Controls.Add(this.label3);
+            this.panelAtTheCheckout.Controls.Add(this.buttonTakePurchases);
             this.panelAtTheCheckout.Controls.Add(this.buttonGiveMoney);
             this.panelAtTheCheckout.Controls.Add(this.textBoxMoney);
             this.panelAtTheCheckout.Controls.Add(this.buttonShowDiscount);
             this.panelAtTheCheckout.Controls.Add(this.comboBoxDiscount);
-            this.panelAtTheCheckout.Controls.Add(this.labelSum);
+            this.panelAtTheCheckout.Controls.Add(this.labelSumFinal);
             this.panelAtTheCheckout.Controls.Add(this.textBoxReceipt);
             this.panelAtTheCheckout.Controls.Add(this.dataGridViewPurchasesOnTape);
             this.panelAtTheCheckout.Controls.Add(this.label2);
             this.panelAtTheCheckout.Location = new System.Drawing.Point(12, 177);
             this.panelAtTheCheckout.Name = "panelAtTheCheckout";
-            this.panelAtTheCheckout.Size = new System.Drawing.Size(775, 355);
+            this.panelAtTheCheckout.Size = new System.Drawing.Size(775, 380);
             this.panelAtTheCheckout.TabIndex = 1;
             // 
             // buttonGiveMoney
             // 
-            this.buttonGiveMoney.Location = new System.Drawing.Point(112, 321);
+            this.buttonGiveMoney.Location = new System.Drawing.Point(633, 174);
             this.buttonGiveMoney.Name = "buttonGiveMoney";
             this.buttonGiveMoney.Size = new System.Drawing.Size(136, 23);
             this.buttonGiveMoney.TabIndex = 8;
             this.buttonGiveMoney.Text = "Дать деньги";
             this.buttonGiveMoney.UseVisualStyleBackColor = true;
+            this.buttonGiveMoney.Click += new System.EventHandler(this.buttonGiveMoney_Click);
             // 
             // textBoxMoney
             // 
-            this.textBoxMoney.Location = new System.Drawing.Point(5, 321);
+            this.textBoxMoney.Location = new System.Drawing.Point(527, 173);
             this.textBoxMoney.Name = "textBoxMoney";
             this.textBoxMoney.Size = new System.Drawing.Size(100, 20);
             this.textBoxMoney.TabIndex = 7;
             // 
             // buttonShowDiscount
             // 
-            this.buttonShowDiscount.Location = new System.Drawing.Point(131, 172);
+            this.buttonShowDiscount.Location = new System.Drawing.Point(130, 170);
             this.buttonShowDiscount.Name = "buttonShowDiscount";
             this.buttonShowDiscount.Size = new System.Drawing.Size(75, 46);
             this.buttonShowDiscount.TabIndex = 6;
             this.buttonShowDiscount.Text = "Показать дисконт";
             this.buttonShowDiscount.UseVisualStyleBackColor = true;
+            this.buttonShowDiscount.Click += new System.EventHandler(this.buttonShowDiscount_Click);
             // 
             // comboBoxDiscount
             // 
+            this.comboBoxDiscount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDiscount.FormattingEnabled = true;
             this.comboBoxDiscount.Location = new System.Drawing.Point(3, 172);
             this.comboBoxDiscount.Name = "comboBoxDiscount";
             this.comboBoxDiscount.Size = new System.Drawing.Size(121, 21);
             this.comboBoxDiscount.TabIndex = 5;
             // 
-            // labelSum
+            // labelSumFinal
             // 
-            this.labelSum.AutoSize = true;
-            this.labelSum.Location = new System.Drawing.Point(228, 175);
-            this.labelSum.Name = "labelSum";
-            this.labelSum.Size = new System.Drawing.Size(41, 13);
-            this.labelSum.TabIndex = 4;
-            this.labelSum.Text = "Сумма";
+            this.labelSumFinal.AutoSize = true;
+            this.labelSumFinal.Location = new System.Drawing.Point(228, 175);
+            this.labelSumFinal.Name = "labelSumFinal";
+            this.labelSumFinal.Size = new System.Drawing.Size(91, 13);
+            this.labelSumFinal.TabIndex = 4;
+            this.labelSumFinal.Text = "Сумма к оплате:";
             // 
             // textBoxReceipt
             // 
-            this.textBoxReceipt.Location = new System.Drawing.Point(3, 224);
+            this.textBoxReceipt.Location = new System.Drawing.Point(3, 222);
             this.textBoxReceipt.Multiline = true;
             this.textBoxReceipt.Name = "textBoxReceipt";
             this.textBoxReceipt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxReceipt.Size = new System.Drawing.Size(769, 91);
+            this.textBoxReceipt.Size = new System.Drawing.Size(769, 118);
             this.textBoxReceipt.TabIndex = 3;
             // 
             // dataGridViewPurchasesOnTape
@@ -216,11 +225,40 @@ namespace TerminalStore
             this.label2.TabIndex = 1;
             this.label2.Text = "Касса";
             // 
+            // buttonTakePurchases
+            // 
+            this.buttonTakePurchases.Location = new System.Drawing.Point(3, 346);
+            this.buttonTakePurchases.Name = "buttonTakePurchases";
+            this.buttonTakePurchases.Size = new System.Drawing.Size(766, 31);
+            this.buttonTakePurchases.TabIndex = 9;
+            this.buttonTakePurchases.Text = "Забрать покупки";
+            this.buttonTakePurchases.UseVisualStyleBackColor = true;
+            this.buttonTakePurchases.Click += new System.EventHandler(this.buttonTakePurchases_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(433, 176);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Деньги кассиру";
+            // 
+            // buttonDeleteLastBuyer
+            // 
+            this.buttonDeleteLastBuyer.Location = new System.Drawing.Point(211, 193);
+            this.buttonDeleteLastBuyer.Name = "buttonDeleteLastBuyer";
+            this.buttonDeleteLastBuyer.Size = new System.Drawing.Size(148, 23);
+            this.buttonDeleteLastBuyer.TabIndex = 11;
+            this.buttonDeleteLastBuyer.Text = "Убрать последнее";
+            this.buttonDeleteLastBuyer.UseVisualStyleBackColor = true;
+            this.buttonDeleteLastBuyer.Click += new System.EventHandler(this.buttonDeleteLastBuyer_Click);
+            // 
             // BuyerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 533);
+            this.ClientSize = new System.Drawing.Size(800, 569);
             this.Controls.Add(this.panelAtTheCheckout);
             this.Controls.Add(this.panelAddPurchase);
             this.Name = "BuyerForm";
@@ -252,9 +290,12 @@ namespace TerminalStore
         private System.Windows.Forms.TextBox textBoxMoney;
         private System.Windows.Forms.Button buttonShowDiscount;
         private System.Windows.Forms.ComboBox comboBoxDiscount;
-        private System.Windows.Forms.Label labelSum;
+        private System.Windows.Forms.Label labelSumFinal;
         private System.Windows.Forms.TextBox textBoxReceipt;
         private System.Windows.Forms.DataGridView dataGridViewPurchasesOnTape;
+        private System.Windows.Forms.Button buttonTakePurchases;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button buttonDeleteLastBuyer;
     }
 }
 

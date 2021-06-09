@@ -13,8 +13,11 @@ namespace TerminalStore
         List<Product> productsInBasket;
         CashierController cashierController;
         DataGridView dataGridMonitor;
-
+        Label labelSumFinal;
+        TextBox textBoxReceipt;
         public DataGridView DataGridMonitor {set => dataGridMonitor = value; }
+        public Label LabelSumFinal { set => labelSumFinal = value; }
+        public TextBox TextBoxReceipt { set => textBoxReceipt = value; }
 
         /// <summary>
         /// Показ дисконтки
@@ -36,7 +39,10 @@ namespace TerminalStore
             this.cashierController = cashierController;
             productsInBasket = new List<Product>();
         }
-
+        /// <summary>
+        /// Добавление продукции
+        /// </summary>
+        /// <param name="comboBoxAllProduct"></param>
         public void SetProduct(ref ComboBox comboBoxAllProduct)
         {
             // List<Product> products =Product.GetAllProduct();
@@ -47,6 +53,22 @@ namespace TerminalStore
                 comboBoxAllProduct.DataSource = terminalContext.Product.Local;
                 comboBoxAllProduct.ValueMember = "ProductId";
                 comboBoxAllProduct.DisplayMember = "Name";
+                //comboBoxAllProduct.DisplayMember =(terminalContext.Product.Find(Convert.ToInt32(comboBoxAllProduct.SelectedValue))).Name;
+            }
+
+        }
+
+
+        public void SetDiscount(ref ComboBox comboBoxAllDiscount)
+        {
+            // List<Product> products =Product.GetAllProduct();
+            // comboBoxAllProduct.Items.AddRange((object)products);
+            using (TerminalContext terminalContext = new TerminalContext())
+            {
+                terminalContext.Discount.Load();
+                comboBoxAllDiscount.DataSource = terminalContext.Discount.Local;
+                comboBoxAllDiscount.ValueMember = "DiscountCardId";
+                comboBoxAllDiscount.DisplayMember = "Name";
                 //comboBoxAllProduct.DisplayMember =(terminalContext.Product.Find(Convert.ToInt32(comboBoxAllProduct.SelectedValue))).Name;
             }
 
@@ -105,14 +127,14 @@ namespace TerminalStore
 
                 MessageBox.Show("Положите что-то в корзинку");
                 return false; }
-            if (cashierController.StartSessionShoping(productsInBasket)) return true;
+            if (cashierController.StartSessionShoping(productsInBasket, NewWriteProduct, ShowFinalSum, ShowReceipt)) return true;
             else return false;
 
         }
 
 
         /// <summary>
-        /// Новое считование
+        /// Новое считование или ввод количества
         /// </summary>
         /// <param name="shoppingSession"></param>
         public void NewWriteProduct(ShoppingSession shoppingSession)
@@ -123,9 +145,80 @@ namespace TerminalStore
 
 
             }
+        }
+
+       
+
+        /// <summary>
+        /// Показ итоговой суммы
+        /// </summary>
+        public void ShowFinalSum(ShoppingSession shoppingSession, double sum)
+        {
+            labelSumFinal.Text = "Сумма к оплате: " + sum + " рублей";
+        }
+
+        /// <summary>
+        /// Показ чека
+        /// </summary>
+        /// <param name="receipt"></param>
+        public void ShowReceipt(string receipt)
+        {
+            textBoxReceipt.Text = receipt;
+        }
+
+
+
+        public void Pay(int money)
+        {
+            if (money <= 0) MessageBox.Show("Хорошая попытка. Долгом не расплачиваеся");
+
+            if (cashierController.Pay(money))
+            {
+                MessageBox.Show("Подожди сейчас дадим чек и сдачу");
+            }
+            else
+            {
+                MessageBox.Show("Мало денег");
+            }
 
 
         }
 
+
+        /// <summary>
+        /// Удаление последнего 
+        /// </summary>
+        public void DeleteLastProduct()
+        {
+            cashierController.DeleteLastProduct();
+        }
+
+
+
+        public void ShowDiscountCard(int idDiscount)
+        {
+            if (idDiscount > 0)
+            {
+                using (TerminalContext terminalContext = new TerminalContext())
+                {
+                    DiscountCard discountCard = terminalContext.Discount.FirstOrDefault(d => d.DiscountCardId == idDiscount);
+                    if(discountCard != null)
+                    {
+                        cashierController.PutDiscointCard(discountCard);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Месья, что за фальшивку вы кладёте?");
+                    }
+                }
+            }
+            else
+            {
+
+                MessageBox.Show("Сударь, где ваша карта?");
+            }
+
+
+        }
     }
 }

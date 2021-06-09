@@ -20,6 +20,7 @@ namespace TerminalStore
             dataGridMonitor.Columns[0].HeaderText = "Товар";
             dataGridMonitor.Columns[1].HeaderText = "Вес/количиество";
             dataGridMonitor.Columns[2].HeaderText = "Стоимость";
+            dataGridMonitor.Rows.Clear();
             using (TerminalContext context = new TerminalContext())
             {
                 foreach (var purchase in shoppingSession.Purchases)
@@ -29,7 +30,15 @@ namespace TerminalStore
                     Product product = context.Product.Find(purchase.ProductId);
                     purchaseStr[0] = product.Name;
                     purchaseStr[1] = string.Format("{0} {1}", purchase.SizeAndCount, product.IsWightStr);
-                    purchaseStr[2] = Convert.ToString(purchase.SizeAndCount * product.Price);
+
+                    double sizeDiscount = 1;
+                    if (shoppingSession.DiscountCard != null)
+                    {
+                        sizeDiscount = shoppingSession.DiscountCard.GetSizeDiscountOnProduct(product);
+
+                    }
+
+                    purchaseStr[2] = Convert.ToString((purchase.SizeAndCount * product.Price)* (1-sizeDiscount));
 
                     dataGridMonitor.Rows.Add(purchaseStr);
 

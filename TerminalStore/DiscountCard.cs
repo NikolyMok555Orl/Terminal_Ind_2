@@ -22,8 +22,17 @@ namespace TerminalStore
             IsAllProduct = isAllProduct;
             Size = size;
             ShoppingSessions = new List<ShoppingSession>();
-            Product = new List<Product>();
+            //Product = new List<Product>();
         }
+
+
+        public DiscountCard(string name, bool isAllProduct, int size, List<Product> products) :this(name, isAllProduct, size)
+        {
+
+            Product = products;
+
+        }
+
 
         [Key]
         public int DiscountCardId { get; set; }
@@ -36,5 +45,31 @@ namespace TerminalStore
         public List<ShoppingSession> ShoppingSessions { get; set; }
 
         public List<Product> Product { get; set; }
+
+
+
+        public double GetSizeDiscountOnProduct(Product product)
+        {
+            double sizeDiscount = 1;
+            if (this.IsAllProduct)
+            {
+                return this.Size / 100.0;
+
+            }
+            else
+            {
+
+                using (TerminalContext terminalContext=new TerminalContext())
+                {
+
+
+
+
+                }
+                    if (Product.Contains(product)) return this.Size / 100.0;
+            }
+
+            return sizeDiscount;
+        }
     }
 }

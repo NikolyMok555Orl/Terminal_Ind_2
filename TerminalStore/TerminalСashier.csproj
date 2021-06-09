@@ -65,6 +65,7 @@
     <Compile Include="BuyerForm.Designer.cs">
       <DependentUpon>BuyerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SetDateGrid.cs" />
     <Compile Include="СashierMap.cs" />
     <Compile Include="DiscountCard.cs" />
     <Compile Include="FormCashier.cs">

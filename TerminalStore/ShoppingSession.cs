@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TerminalStore
 {
@@ -19,9 +20,9 @@ namespace TerminalStore
             Purchases = new List<Purchase>();
         }
 
-        public ShoppingSession(int cassiraMapId) : this()
+        public ShoppingSession(СashierMap cassiraMap) : this()
         {
-            CassiraMapId = cassiraMapId;
+            СashierMap = cassiraMap;
         }
 
 
@@ -29,7 +30,7 @@ namespace TerminalStore
         {
             DiscountCard = discountCard;
             Purchases = purchases;
-            CassiraMap = cassiraMap;
+            СashierMap = cassiraMap;
         }
 
         [Key]
@@ -45,9 +46,32 @@ namespace TerminalStore
 
         public List<Purchase> Purchases { get; set; }
 
-        [ForeignKey("CassiraMap")]
-        public int CassiraMapId { get; set; }
-        public СashierMap CassiraMap { get; set; }
+        [ForeignKey("СashierMap")]
+        public int СashierMapId { get; set; }
+        public СashierMap СashierMap { get; set; }
 
+
+
+
+        public static bool SendShoppingSessionDay(List<ShoppingSession> shoppingSession)
+        {
+            try
+            {
+                using (TerminalContext context = new TerminalContext())
+                {
+                    context.ShoppingSession.AddRange(shoppingSession);
+
+                    context.SaveChanges();
+                    return true;
+
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Ошибка при отправки данных: "+ex);
+                return false;
+            } 
+
+        }
     }
+
 }
