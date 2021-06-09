@@ -21,6 +21,7 @@ namespace TerminalStore
             this.buyerController=buyerController;
             
             buyerController.SetProduct(ref comboBoxProduct);
+            panelAtTheCheckout.Enabled = false;
 
         }
 
@@ -37,6 +38,21 @@ namespace TerminalStore
         private void buttonDeleteLast_Click(object sender, EventArgs e)
         {
             buyerController.DeleteInTheBasket(dataGridViewPurchases);
+        }
+
+        private void buttonToCassira_Click(object sender, EventArgs e)
+        {
+            if (buyerController.GoToCheckout())
+            {
+                panelAtTheCheckout.Enabled = true;
+                buyerController.DataGridMonitor = dataGridViewPurchasesOnTape;
+            }
+            else
+            {
+                MessageBox.Show("Касса занята. Пожалуйста подойти позже");
+            }
+           
+
         }
     }
 }

@@ -17,11 +17,12 @@ namespace TerminalStore
         {
         }
 
-        public Purchase(int sizeAndCount, int shoppingSessionId, ShoppingSession shoppingSession)
+        public Purchase( int productId, int sizeAndCount, int shoppingSessionId)
         {
+            ProductId = productId;
             SizeAndCount = sizeAndCount;
             ShoppingSessionId = shoppingSessionId;
-            ShoppingSession = shoppingSession;
+            //ShoppingSession = shoppingSession;
         }
 
         [Key]

@@ -12,6 +12,24 @@ namespace TerminalStore
     {
         List<Product> productsInBasket;
         CashierController cashierController;
+        DataGridView dataGridMonitor;
+
+        public DataGridView DataGridMonitor {set => dataGridMonitor = value; }
+
+        /// <summary>
+        /// Показ дисконтки
+        /// </summary>
+        /// <param name="discountCard"></param>
+        public delegate void HappenShowDiscount(DiscountCard discountCard);
+        event HappenShowDiscount showDiscount;
+
+
+        /// <summary>
+        /// Показ дисконтки
+        /// </summary>
+        /// <param name="discountCard"></param>
+        public delegate void HappenDeleteLastProduct();
+        event HappenDeleteLastProduct eventDelete;
 
         public BuyerController(CashierController cashierController)
         {
@@ -29,6 +47,7 @@ namespace TerminalStore
                 comboBoxAllProduct.DataSource = terminalContext.Product.Local;
                 comboBoxAllProduct.ValueMember = "ProductId";
                 comboBoxAllProduct.DisplayMember = "Name";
+                //comboBoxAllProduct.DisplayMember =(terminalContext.Product.Find(Convert.ToInt32(comboBoxAllProduct.SelectedValue))).Name;
             }
 
         }
@@ -74,6 +93,38 @@ namespace TerminalStore
                     dataGridBasket.RowCount = dataGridBasket.RowCount - 1;
                 }
             }
+        }
+
+        /// <summary>
+        /// Отправиться к кассе
+        /// </summary>
+        /// <returns></returns>
+        public bool GoToCheckout()
+        {
+            if (productsInBasket is null || productsInBasket.Count == 0) {
+
+                MessageBox.Show("Положите что-то в корзинку");
+                return false; }
+            if (cashierController.StartSessionShoping(productsInBasket)) return true;
+            else return false;
+
+        }
+
+
+        /// <summary>
+        /// Новое считование
+        /// </summary>
+        /// <param name="shoppingSession"></param>
+        public void NewWriteProduct(ShoppingSession shoppingSession)
+        {
+            if (shoppingSession != null)
+            {
+                SetDateGrid.SetReceipt(dataGridMonitor, shoppingSession);
+
+
+            }
+
+
         }
 
     }

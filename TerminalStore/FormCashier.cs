@@ -29,7 +29,7 @@ namespace TerminalStore
                 buttonStart.Enabled = false;
                 // Запустить инициализацию базы данных в этой точке
                 context.Database.Initialize(false);
-                сashierContoller = new CashierController();
+                сashierContoller = new CashierController(labelFirstPurchase);
                 FormLogin formLogin = new FormLogin(сashierContoller);
                 formLogin.ShowDialog();
 
@@ -78,5 +78,8 @@ namespace TerminalStore
             сashierContoller.SetStartMoney();
             buttonStart.Enabled = true;
         }
+
+
+        
     }
 }

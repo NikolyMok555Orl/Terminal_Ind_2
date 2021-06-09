@@ -16,14 +16,39 @@ namespace TerminalStore
         List<ShoppingSession> shoppingSessionDay;
         СashierMap cassiraMap;
         BuyerForm buyerForm;
+        DiscountCard discountCard;
         int money;
         bool excessMoney;
         BuyerController buyerController;
+        List<Product> products;
+        Label tape, thisProduct;
+        bool isService;
 
-        public CashierController()
+
+
+        /// <summary>
+        /// Добавление покупки
+        /// </summary>
+        /// <param name="shoppingSession"></param>
+        public delegate void HappenConsidered(ShoppingSession shoppingSession);
+        event HappenConsidered happenConsidered;
+
+        /// <summary>
+        /// Итог
+        /// </summary>
+        /// <param name="shoppingSession"></param>
+        public delegate void HappenEndSessiong(ShoppingSession shoppingSession, int sum);
+        event HappenEndSessiong happenEnd;
+
+
+
+        public CashierController(Label tape,Label thisProduct)
         {
+            this.tape = tape;
+            this.thisProduct = thisProduct;
             money = 0;
             excessMoney = false;
+            isService = false;
         }
 
 
@@ -85,5 +110,43 @@ namespace TerminalStore
             buyerForm.Show();
         }
 
+        public bool StartSessionShoping(List<Product> products)
+        {
+            if (!isService)
+            {
+                this.products = products;
+                tape.Text = products.First().ToString();
+                shoppingSession = new ShoppingSession();
+                MessageBox.Show("Подошёл покупатель");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Считывание продукта
+        /// </summary>
+        /// <param name="dataGridProduct"></param>
+        public void ReadProduct(DataGridView dataGridProduct)
+        {
+            if (products.Count > 0)
+            {
+                Product product = products.First();
+                products.Remove(product);
+                shoppingSession = new ShoppingSession(cassiraMap.CassiraMapId);
+                Purchase purchase = new Purchase(product.ProductId, 0, shoppingSession.SessionId);
+
+
+            }
+            else
+            {
+                MessageBox.Show("Товаров на ленте закончилось");
+            }
+
+        }
+             
     }
 }

@@ -15,7 +15,15 @@ namespace TerminalStore
     {
         public ShoppingSession()
         {
+            DateSessoin = DateTime.Now;
+            Purchases = new List<Purchase>();
         }
+
+        public ShoppingSession(int cassiraMapId) : this()
+        {
+            CassiraMapId = cassiraMapId;
+        }
+
 
         public ShoppingSession(DiscountCard discountCard, List<Purchase> purchases, СashierMap cassiraMap)
         {

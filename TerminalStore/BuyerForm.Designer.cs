@@ -74,6 +74,7 @@ namespace TerminalStore
             this.buttonToCassira.TabIndex = 6;
             this.buttonToCassira.Text = "Отправиться к кассе";
             this.buttonToCassira.UseVisualStyleBackColor = true;
+            this.buttonToCassira.Click += new System.EventHandler(this.buttonToCassira_Click);
             // 
             // buttonDeleteLast
             // 
