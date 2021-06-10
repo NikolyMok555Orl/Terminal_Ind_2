@@ -13,11 +13,12 @@ namespace TerminalStore
         List<Product> productsInBasket;
         CashierController cashierController;
         DataGridView dataGridMonitor;
-        Label labelSumFinal;
+        Label labelSumFinal, labelSurrender;
         TextBox textBoxReceipt;
         public DataGridView DataGridMonitor {set => dataGridMonitor = value; }
         public Label LabelSumFinal { set => labelSumFinal = value; }
         public TextBox TextBoxReceipt { set => textBoxReceipt = value; }
+        public Label LabelSurrender {set => labelSurrender = value; }
 
         /// <summary>
         /// Показ дисконтки
@@ -161,8 +162,9 @@ namespace TerminalStore
         /// Показ чека
         /// </summary>
         /// <param name="receipt"></param>
-        public void ShowReceipt(string receipt)
+        public void ShowReceipt(string receipt, double surrender)
         {
+            labelSurrender.Text = "Сдача " + surrender;
             textBoxReceipt.Text = receipt;
         }
 

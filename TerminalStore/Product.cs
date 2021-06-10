@@ -68,7 +68,7 @@ namespace TerminalStore
 
         public override string ToString()
         {
-            return string.Format("{0} {1} руб за {2}" , Name, Price, (IsWight?"г":"шт"));
+            return string.Format("{0} {1} руб за {2}" , Name, Price, (IsWight?"кг":"шт"));
         }
 
         public override bool Equals(object obj)
@@ -80,5 +80,10 @@ namespace TerminalStore
         }
 
         public List<Purchase> Purchases { get; set; }
+
+
+        public double PriceOfOne() {
+            return (Price / (IsWight ? 1000.0 : 1));
+        }
     }
 }

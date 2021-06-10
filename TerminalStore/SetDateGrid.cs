@@ -38,7 +38,7 @@ namespace TerminalStore
 
                     }
 
-                    purchaseStr[2] = Convert.ToString((purchase.SizeAndCount * product.Price)* (1-sizeDiscount));
+                    purchaseStr[2] = Convert.ToString((purchase.SizeAndCount * product.PriceOfOne())* (1-sizeDiscount));
 
                     dataGridMonitor.Rows.Add(purchaseStr);
 

@@ -102,14 +102,18 @@ namespace TerminalStore
                 buttonEndDay.Enabled = true;
                 labelSum.Text = "";
                 labelThisProduct.Text = "";
-                if (cashierController.ExcessMoney) MessageBox.Show("Сдайте деньги");
+                if (cashierController.ExcessMoney){ 
+                    MessageBox.Show("Сдайте деньги");
+                    panelCassier.Enabled = false;
+                    }
             }
         }
 
         private void buttonHandOverMoney_Click(object sender, EventArgs e)
         {
             cashierController.HandOverMoney();
-            
+            cashierController.SetStartMoney();
+            panelCassier.Enabled = true;
         }
 
         private void buttonEndDay_Click(object sender, EventArgs e)

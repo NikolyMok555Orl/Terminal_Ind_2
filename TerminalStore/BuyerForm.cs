@@ -25,6 +25,7 @@ namespace TerminalStore
             comboBoxDiscount.SelectedIndex = -1;
             panelAtTheCheckout.Enabled = false;
             buyerController.LabelSumFinal = labelSumFinal;
+            buyerController.LabelSurrender = labelSurrender;
             buyerController.TextBoxReceipt = textBoxReceipt;
         }
 

@@ -48,7 +48,7 @@ namespace TerminalStore
         /// Итог. Печать чека
         /// </summary>
         /// <param name="shoppingSession"></param>
-        public delegate void HappenWriteReceipt(string receipt);
+        public delegate void HappenWriteReceipt(string receipt, double surrender);
         event HappenWriteReceipt happenWriteReceipt;
 
         public CashierController(Label tape,Label thisProduct, Label labelSum, DataGridView dataGridProduct, Label labelDiscount)
@@ -67,6 +67,7 @@ namespace TerminalStore
         public void SetStartMoney()
         {
             money = 5000;
+            isService = false;
         }
 
         /// <summary>
@@ -75,6 +76,7 @@ namespace TerminalStore
         public void HandOverMoney()
         {
             money = 0;
+            excessMoney = false;
             MessageBox.Show("Деньги сданы менеджеру");
         }
 
@@ -181,7 +183,7 @@ namespace TerminalStore
 
         public void SetCountWight(int countAndWight, DataGridView dataGridProduct)
         {
-            if (countAndWight > 0) {
+            if (countAndWight > 0 && shoppingSession.Purchases!=null) {
                 shoppingSession.Purchases.Last().SizeAndCount= countAndWight;
                 SetDateGrid.SetReceipt(dataGridProduct, shoppingSession);
                 happenConsidered?.Invoke(shoppingSession);
@@ -209,14 +211,14 @@ namespace TerminalStore
                     {
                         Product product= terminalContext.Product.FirstOrDefault(p => p.ProductId == purchase.ProductId);
                         if (product is null) return false;
-                        double sizeDiscount = 1;
+                        double sizeDiscount = 0;
 
                         if(shoppingSession.DiscountCard != null)
                         {
                             sizeDiscount = shoppingSession.DiscountCard.GetSizeDiscountOnProduct(product);
                         }
 
-                        sumThis = (product.Price / (product.IsWight ? 1000 : 1)) * purchase.SizeAndCount*(1- sizeDiscount);
+                        sumThis = product.PriceOfOne() * purchase.SizeAndCount*(1- sizeDiscount);
                     }
                     sum += sumThis;
                     this.sumThis = sum;
@@ -266,7 +268,7 @@ namespace TerminalStore
         {
             PutMoney(paymentSum);
             shoppingSessionDay.Add(shoppingSession);
-            happenWriteReceipt?.Invoke(CheckPrint());
+            happenWriteReceipt?.Invoke(CheckPrint(), paymentSum-sumThis);
 
 
         }
@@ -282,12 +284,45 @@ namespace TerminalStore
             }
 
         }
-
+        //Печать чека
         private string CheckPrint()
         {
             string check = "";
+            double sumWithoutDiscount = 0;
+            double sumTotal = 0;
+            foreach (var purchase in shoppingSession.Purchases)
+            {
+                string position = "";
+                position +="Код: "+ purchase.ProductId+" ";
+                position +="Товар "+ purchase.Product.Name + " ";
+                position +="Кол/вес "+ purchase.SizeAndCount + " " + purchase.Product.IsWightStr + " ";
+                position+="Цена "+ purchase.Product.Price + " ";
+                double sizeDiscount = 0;
 
-            return "Чек";
+                if (shoppingSession.DiscountCard != null)
+                {
+                    sizeDiscount = shoppingSession.DiscountCard.GetSizeDiscountOnProduct(purchase.Product);
+                }
+                double sumThis = (purchase.Product.PriceOfOne()) * purchase.SizeAndCount;
+                sumWithoutDiscount += sumThis;
+                double sumDiscount = sumThis - sumThis*(1 - sizeDiscount);
+                sumThis *= (1 - sizeDiscount);
+                sumTotal += sumThis;
+                position += "Стоимость " + sumThis + " ";
+                if(sumDiscount > 0)
+                {
+                    position += "Скидка " + sumDiscount + " ";
+                }
+                check += position + System.Environment.NewLine;
+            }
+
+            check += "Общая скидка " + (sumWithoutDiscount-sumTotal) + System.Environment.NewLine;
+            check += "Общая сумма " + (sumTotal) + System.Environment.NewLine;
+            check += "Кассир " + (shoppingSession.СashierMap.Name) + System.Environment.NewLine;
+            check += "Сумма покупателя " + (paymentSum) + System.Environment.NewLine;
+            check += "Сдача " + (paymentSum- sumTotal) + System.Environment.NewLine;
+            check += "Спасибо за покупку";
+            return check;
 
         }
 

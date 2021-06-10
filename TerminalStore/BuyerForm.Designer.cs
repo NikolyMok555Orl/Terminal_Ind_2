@@ -38,6 +38,9 @@ namespace TerminalStore
             this.comboBoxProduct = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelAtTheCheckout = new System.Windows.Forms.Panel();
+            this.buttonDeleteLastBuyer = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.buttonTakePurchases = new System.Windows.Forms.Button();
             this.buttonGiveMoney = new System.Windows.Forms.Button();
             this.textBoxMoney = new System.Windows.Forms.TextBox();
             this.buttonShowDiscount = new System.Windows.Forms.Button();
@@ -46,9 +49,7 @@ namespace TerminalStore
             this.textBoxReceipt = new System.Windows.Forms.TextBox();
             this.dataGridViewPurchasesOnTape = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonTakePurchases = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.buttonDeleteLastBuyer = new System.Windows.Forms.Button();
+            this.labelSurrender = new System.Windows.Forms.Label();
             this.panelAddPurchase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchases)).BeginInit();
             this.panelAtTheCheckout.SuspendLayout();
@@ -138,6 +139,7 @@ namespace TerminalStore
             // 
             // panelAtTheCheckout
             // 
+            this.panelAtTheCheckout.Controls.Add(this.labelSurrender);
             this.panelAtTheCheckout.Controls.Add(this.buttonDeleteLastBuyer);
             this.panelAtTheCheckout.Controls.Add(this.label3);
             this.panelAtTheCheckout.Controls.Add(this.buttonTakePurchases);
@@ -153,6 +155,35 @@ namespace TerminalStore
             this.panelAtTheCheckout.Name = "panelAtTheCheckout";
             this.panelAtTheCheckout.Size = new System.Drawing.Size(775, 380);
             this.panelAtTheCheckout.TabIndex = 1;
+            // 
+            // buttonDeleteLastBuyer
+            // 
+            this.buttonDeleteLastBuyer.Location = new System.Drawing.Point(211, 193);
+            this.buttonDeleteLastBuyer.Name = "buttonDeleteLastBuyer";
+            this.buttonDeleteLastBuyer.Size = new System.Drawing.Size(148, 23);
+            this.buttonDeleteLastBuyer.TabIndex = 11;
+            this.buttonDeleteLastBuyer.Text = "Убрать последнее";
+            this.buttonDeleteLastBuyer.UseVisualStyleBackColor = true;
+            this.buttonDeleteLastBuyer.Click += new System.EventHandler(this.buttonDeleteLastBuyer_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(433, 176);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Деньги кассиру";
+            // 
+            // buttonTakePurchases
+            // 
+            this.buttonTakePurchases.Location = new System.Drawing.Point(3, 346);
+            this.buttonTakePurchases.Name = "buttonTakePurchases";
+            this.buttonTakePurchases.Size = new System.Drawing.Size(766, 31);
+            this.buttonTakePurchases.TabIndex = 9;
+            this.buttonTakePurchases.Text = "Забрать покупки";
+            this.buttonTakePurchases.UseVisualStyleBackColor = true;
+            this.buttonTakePurchases.Click += new System.EventHandler(this.buttonTakePurchases_Click);
             // 
             // buttonGiveMoney
             // 
@@ -225,34 +256,14 @@ namespace TerminalStore
             this.label2.TabIndex = 1;
             this.label2.Text = "Касса";
             // 
-            // buttonTakePurchases
+            // labelSurrender
             // 
-            this.buttonTakePurchases.Location = new System.Drawing.Point(3, 346);
-            this.buttonTakePurchases.Name = "buttonTakePurchases";
-            this.buttonTakePurchases.Size = new System.Drawing.Size(766, 31);
-            this.buttonTakePurchases.TabIndex = 9;
-            this.buttonTakePurchases.Text = "Забрать покупки";
-            this.buttonTakePurchases.UseVisualStyleBackColor = true;
-            this.buttonTakePurchases.Click += new System.EventHandler(this.buttonTakePurchases_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(433, 176);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Деньги кассиру";
-            // 
-            // buttonDeleteLastBuyer
-            // 
-            this.buttonDeleteLastBuyer.Location = new System.Drawing.Point(211, 193);
-            this.buttonDeleteLastBuyer.Name = "buttonDeleteLastBuyer";
-            this.buttonDeleteLastBuyer.Size = new System.Drawing.Size(148, 23);
-            this.buttonDeleteLastBuyer.TabIndex = 11;
-            this.buttonDeleteLastBuyer.Text = "Убрать последнее";
-            this.buttonDeleteLastBuyer.UseVisualStyleBackColor = true;
-            this.buttonDeleteLastBuyer.Click += new System.EventHandler(this.buttonDeleteLastBuyer_Click);
+            this.labelSurrender.AutoSize = true;
+            this.labelSurrender.Location = new System.Drawing.Point(436, 202);
+            this.labelSurrender.Name = "labelSurrender";
+            this.labelSurrender.Size = new System.Drawing.Size(37, 13);
+            this.labelSurrender.TabIndex = 12;
+            this.labelSurrender.Text = "Сдача";
             // 
             // BuyerForm
             // 
@@ -296,6 +307,7 @@ namespace TerminalStore
         private System.Windows.Forms.Button buttonTakePurchases;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonDeleteLastBuyer;
+        private System.Windows.Forms.Label labelSurrender;
     }
 }
 

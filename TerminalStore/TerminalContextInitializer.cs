@@ -12,13 +12,15 @@ namespace TerminalStore
         protected override void Seed(TerminalContext context)
         {
 
-            Product product1 = new Product("яйца", false, 7);
-            Product product2 = new Product("хлеб", false, 23);
-            Product product3 = new Product("картошка", true, 50);
+            Product product1 = new Product("Яйца", false, 7);
+            Product product2 = new Product("Хлеб", false, 23);
+            Product product3 = new Product("Картошка", true, 50);
+            Product product4 = new Product("Слиток золота", true, 136142);
 
             context.Product.Add(product1);
             context.Product.Add(product2);
             context.Product.Add(product3);
+            context.Product.Add(product4);
             context.SaveChanges();
             СashierMap cashierMap = new СashierMap("Татьяна", "1", "Татьяна");
             context.СashierMap.Add(cashierMap);
